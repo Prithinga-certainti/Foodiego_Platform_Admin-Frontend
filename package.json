@@ -2,6 +2,7 @@
   "name": "foodiego-admin-frontend",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://prithinga-certainti.github.io/Foodiego_Platform_Admin-Frontend",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
