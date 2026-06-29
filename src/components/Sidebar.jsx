@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Tag, UtensilsCrossed, Users, BarChart2, Star, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, Tag, UtensilsCrossed, Users, BarChart2, Star, Settings, LogOut, ClipboardList } from 'lucide-react';
 
 const NAV = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
   { icon: Tag, label: 'Brand Management', path: '/brands' },
   { icon: UtensilsCrossed, label: 'Restaurants', path: '/restaurants' },
+  { icon: ClipboardList, label: 'Menu Approval', path: '/menu-approval' },
   { icon: Users, label: 'User Management', path: '/users' },
   { icon: BarChart2, label: 'Reports & Analytics', path: '/reports' },
   { icon: Star, label: 'Reviews', path: '/reviews' },

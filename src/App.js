@@ -5,6 +5,7 @@ import DashboardPage from './pages/DashboardPage';
 import BrandManagementPage from './pages/BrandManagementPage';
 import RestaurantManagementPage from './pages/RestaurantManagementPage';
 import UserManagementPage from './pages/UserManagementPage';
+import MenuApprovalPage from './pages/MenuApprovalPage';
 import AppLayout from './components/AppLayout';
 
 function PrivateRoute({ children }) {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="brands" element={<BrandManagementPage />} />
           <Route path="restaurants" element={<RestaurantManagementPage />} />
           <Route path="users" element={<UserManagementPage />} />
+          <Route path="menu-approval" element={<MenuApprovalPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
