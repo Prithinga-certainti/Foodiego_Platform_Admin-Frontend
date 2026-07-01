@@ -25,3 +25,25 @@ jobs:
         env:
           CI: false # CRA treats lint warnings as errors when CI=true; keep parity with the deploy build
         run: npm run build
+
+  version-check:
+    # Fails the PR if package.json "version" was not bumped vs the base branch.
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify package.json version was bumped
+        run: |
+          git fetch origin "${{ github.base_ref }}" --depth=1
+          BASE=$(git show "origin/${{ github.base_ref }}:package.json" | node -pe "JSON.parse(require('fs').readFileSync(0,'utf8')).version")
+          HEAD=$(node -pe "require('./package.json').version")
+          echo "base (${{ github.base_ref }}) version: $BASE"
+          echo "PR version:                 $HEAD"
+          if [ "$BASE" = "$HEAD" ]; then
+            echo "::error file=package.json::Version is still $BASE. Bump it before merging (e.g. 'npm version patch --no-git-tag-version')."
+            exit 1
+          fi
+          echo "Version bumped: $BASE -> $HEAD"
